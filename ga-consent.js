@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-
+ 
   var GA_ID = 'G-6TJYKB2M7D';
   var STORAGE_KEY = 'mz_cookie_consent';
 
