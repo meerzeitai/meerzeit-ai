@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="de">
 <head>
-<script src="ga-consent.js"></script> 
+<script src="ga-consent.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KI-Check — MeerZeit.ai</title>
@@ -178,6 +178,14 @@ footer{padding:30px 0 40px;text-align:center;color:rgba(255,255,255,.4);font-siz
 .next-step .ns-eyebrow{font-family:var(--ff-display);font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-300);margin-bottom:10px}
 .next-step h3{color:#fff;font-size:1.22rem;margin-bottom:10px}
 .next-step p{color:rgba(255,255,255,.8);font-size:.97rem;line-height:1.6}
+.lead-insight{background:rgba(255,255,255,.08);border-radius:12px;padding:16px 20px;border:1px solid rgba(255,255,255,.1);margin:14px 0 18px}
+.lead-insight p{color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.58;margin:0}
+.lead-static{color:rgba(255,255,255,.68);font-size:.93rem;line-height:1.6;margin-bottom:20px}
+.lead-trust-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.lead-trust-row span{font-size:.81rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px}
+.trust-note{display:flex;gap:12px;align-items:flex-start;background:rgba(90,106,134,.07);border:1px solid rgba(90,106,134,.14);border-radius:12px;padding:14px 18px;margin-top:14px}
+.trust-note p{color:var(--slate);font-size:.86rem;line-height:1.55;margin:0}
+.trust-note strong{color:var(--navy-700);font-weight:600}
 
 @media(max-width:640px){
   .qcard,.result-hero,.result-block,.contact-block{padding:32px 22px}
@@ -265,87 +273,89 @@ const IC = {
   bulb:'<path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/>'
 };
 
+// hebelTitle = richer label shown in the solution card headline
 const QUESTIONS = [
-  {key:'comm', icon:'mail', area:'Kommunikation',
+  {key:'comm', icon:'mail', area:'Kommunikation', hebelTitle:'Kommunikation',
    q:'Wie viele Stunden pro Woche kostet Kommunikation Ihr Unternehmen insgesamt?',
    sub:'E-Mails, Kunden- und Supportanfragen, Telefonnotizen, Infos aus Chats suchen.',
    tasks:['E-Mails beantworten','Kundenanfragen','Supportanfragen','Telefonnotizen','Chat-Recherche'],
    max:40, def:10, savingRate:0.45},
-  {key:'org', icon:'calendar', area:'Organisation',
+  {key:'org', icon:'calendar', area:'Organisation', hebelTitle:'Organisation & Koordination',
    q:'Wie viele Stunden pro Woche kostet Organisation & Koordination Ihr Unternehmen insgesamt?',
    sub:'Terminplanung, Kalenderkoordination, Meeting-Vorbereitung und -Protokolle, Aufgabenverwaltung.',
    tasks:['Terminplanung','Kalender','Meeting-Vorbereitung','Protokolle','Aufgabenverwaltung'],
    max:30, def:6, savingRate:0.45},
-  {key:'sales', icon:'trend', area:'Vertrieb',
+  {key:'sales', icon:'trend', area:'Vertrieb', hebelTitle:'Vertriebsprozesse',
    q:'Wie viele Stunden pro Woche kostet Vertrieb Ihr Unternehmen insgesamt?',
    sub:'Lead-Recherche & -Qualifizierung, Follow-ups, Angebotsvorbereitung, CRM-Pflege.',
    tasks:['Lead-Recherche','Lead-Qualifizierung','Follow-ups','Angebote','CRM-Pflege'],
    max:30, def:6, savingRate:0.40},
-  {key:'mkt', icon:'edit', area:'Marketing',
+  {key:'mkt', icon:'edit', area:'Marketing', hebelTitle:'Marketing & Content',
    q:'Wie viele Stunden pro Woche kostet Marketing & Content Ihr Unternehmen insgesamt?',
    sub:'Social-Media-Posts, Content-Ideen, Blogartikel, Newsletter, Werbetexte.',
    tasks:['Social-Media-Posts','Content-Ideen','Blogartikel','Newsletter','Werbetexte'],
    max:30, def:5, savingRate:0.55},
-  {key:'admin', icon:'file', area:'Verwaltung',
+  {key:'admin', icon:'file', area:'Verwaltung', hebelTitle:'Verwaltung & Dokumentation',
    q:'Wie viele Stunden pro Woche kostet die Verwaltung Ihr Unternehmen insgesamt?',
    sub:'Dateneingabe, Dokumentenverwaltung, Rechnungen, Berichte, Formulare.',
    tasks:['Dateneingabe','Dokumente','Rechnungen','Berichte','Formulare'],
    max:30, def:6, savingRate:0.60},
-  {key:'know', icon:'search', area:'Wissensmanagement',
+  {key:'know', icon:'search', area:'Wissensmanagement', hebelTitle:'Wissensmanagement',
    q:'Wie viele Stunden pro Woche kostet Wissensarbeit Ihr Unternehmen insgesamt?',
    sub:'Informationen suchen, Dokumentationen, Onboarding, Wissensdatenbanken, FAQs.',
    tasks:['Infos suchen','Dokumentation','Onboarding','Wissensdatenbank','FAQs'],
    max:25, def:4, savingRate:0.45},
-  {key:'hr', icon:'users', area:'Personalwesen',
+  {key:'hr', icon:'users', area:'Personalwesen', hebelTitle:'Personal & Recruiting',
    q:'Wie viele Stunden pro Woche kosten Personalthemen Ihr Unternehmen insgesamt?',
    sub:'Bewerbungen sichten, Stellenanzeigen, Mitarbeiterkommunikation, Schulungsunterlagen.',
    tasks:['Bewerbungen','Stellenanzeigen','Mitarbeiterkomm.','Schulungen'],
    max:20, def:3, savingRate:0.30},
-  {key:'data', icon:'chart', area:'Daten & Analyse',
+  {key:'data', icon:'chart', area:'Daten & Analyse', hebelTitle:'Daten & Reporting',
    q:'Wie viele Stunden pro Woche kostet Datenarbeit & Reporting Ihr Unternehmen insgesamt?',
    sub:'Reports, Excel-Auswertungen, KPI-Monitoring, Datenzusammenfassungen, Wettbewerbsrecherche.',
    tasks:['Reports','Excel-Auswertungen','KPI-Monitoring','Zusammenfassungen','Recherche'],
    max:25, def:4, savingRate:0.55},
-  {key:'routine', icon:'repeat', area:'Routineaufgaben',
+  {key:'routine', icon:'repeat', area:'Routineaufgaben', hebelTitle:'Routineaufgaben',
    q:'Wie viele Stunden pro Woche kosten Routineaufgaben Ihr Unternehmen insgesamt?',
    sub:'Copy & Paste, Daten zwischen Systemen übertragen, Standardantworten, Statusupdates, Erinnerungen.',
    tasks:['Copy & Paste','Daten übertragen','Standardantworten','Statusupdates','Nachverfolgung'],
    max:30, def:6, savingRate:0.75},
-  {key:'team', icon:'users', area:'Ihr Team',
+  {key:'team', icon:'users', area:'Ihr Team', hebelTitle:'',
    q:'Wie viele Personen erledigen diese Aufgaben in Ihrem Unternehmen?',
    sub:'Wird für die Berechnung des Einsparpotenzials und die Teamgröße verwendet.',
-   tasks:[],
-   max:50, def:3, isTeam:true}
+   tasks:[], max:50, def:3, isTeam:true}
 ];
 
+// Richer, benefit-oriented solution descriptions per area
 const SOLUTIONS = {
-  comm:{icon:'mail',   desc:'KI beantwortet Standard-E-Mails, fasst Nachrichten zusammen und hält Ihren Posteingang organisiert – rund um die Uhr.'},
-  org: {icon:'calendar',desc:'Automatische Terminbuchung, Kalenderabgleich und KI-generierte Meeting-Protokolle ohne manuellen Aufwand.'},
-  sales:{icon:'trend', desc:'KI recherchiert und qualifiziert Leads, schreibt Follow-ups und hält Ihr CRM automatisch aktuell.'},
-  mkt: {icon:'edit',  desc:'Erstellt Social-Media-Posts, Newsletter und Werbetexte in Ihrem Stil – aus einem kurzen Stichpunkt.'},
-  admin:{icon:'file', desc:'Automatische Dateneingabe, Rechnungsverarbeitung und Berichtserstellung statt manueller Fleißarbeit.'},
-  know:{icon:'search',desc:'Ein KI-Chat, der sofort Antworten aus Ihren Dokumenten liefert und Onboarding & FAQs übernimmt.'},
-  hr:  {icon:'users', desc:'Vorsortierung von Bewerbungen, automatische Stellenanzeigen und vorbereitete Mitarbeiterkommunikation.'},
-  data:{icon:'chart', desc:'KI fasst Daten zusammen, erstellt Reports und überwacht KPIs – auf Knopfdruck statt stundenlang.'},
-  routine:{icon:'repeat',desc:'Wiederkehrende Klick-Arbeit zwischen Ihren Tools läuft automatisch im Hintergrund.'}
+  comm:   {icon:'mail',     desc:'Ein KI-gestützter E-Mail- und Support-Assistent kann einen großen Teil wiederkehrender Anfragen automatisch bearbeiten, zusammenfassen und priorisieren – ohne manuellen Eingriff Ihres Teams.'},
+  org:    {icon:'calendar', desc:'Kalenderkoordination, Aufgabenmanagement und Meeting-Protokolle lassen sich durch KI erheblich beschleunigen. Termine werden ohne Rückfragen koordiniert, Protokolle entstehen automatisch.'},
+  sales:  {icon:'trend',    desc:'KI kann Lead-Recherche, CRM-Pflege und Follow-ups deutlich beschleunigen. Angebote entstehen schneller, Leads werden qualifiziert – Ihr Vertriebsteam konzentriert sich auf die Abschlüsse.'},
+  mkt:    {icon:'edit',     desc:'Content-Agenten erstellen Entwürfe für Social Media, Newsletter und Blogartikel automatisch – auf Basis Ihres Stils und Ihrer Kernbotschaften. Texterstellung in Minuten statt Stunden.'},
+  admin:  {icon:'file',     desc:'Eingehende Dokumente, Rechnungen und Formulare lassen sich automatisch erkennen, klassifizieren und verarbeiten. Manuelle Dateneingabe und Ablage entfällt weitgehend.'},
+  know:   {icon:'search',   desc:'Ein KI-Wissenssystem beantwortet Mitarbeiter- und Kundenfragen sofort auf Basis Ihrer eigenen Dokumentation – ohne Wartezeiten und ohne Experten zu unterbrechen.'},
+  hr:     {icon:'users',    desc:'Bewerbungen sichten, Stellenanzeigen formulieren, Kandidaten vorqualifizieren: KI übernimmt zeitintensive Routineschritte im Recruiting-Prozess zuverlässig und schnell.'},
+  data:   {icon:'chart',    desc:'KI-gestützte Reports und Dashboards liefern konsolidierte Kennzahlen automatisch – täglich, wöchentlich oder auf Abruf, ohne stundenlangen Excel-Aufwand.'},
+  routine:{icon:'repeat',   desc:'Systemübergreifende Datenübertragung, Statusupdates und Standardmeldungen laufen vollautomatisch im Hintergrund – Ihr Team muss nicht manuell eingreifen.'}
 };
 
-const NEXT_STEPS = {
-  comm:   'Ein KI-E-Mail- und Chat-Assistent könnte Ihnen bereits 4–6 Stunden pro Woche einsparen – ohne eine einzige Antwort manuell zu schreiben.',
-  org:    'Automatisierte Terminbuchung und KI-Meeting-Protokolle würden Ihren Koordinationsaufwand sofort spürbar reduzieren.',
-  sales:  'Ein KI-Vertriebs-Agent übernimmt Lead-Recherche, Follow-ups und CRM-Pflege – Ihr Team konzentriert sich aufs Abschließen.',
-  mkt:    'Ein Content-Agent könnte große Teile Ihrer Texterstellung übernehmen – Social Media, Newsletter, Werbetexte auf Knopfdruck.',
-  admin:  'Dokumenten- und Rechnungsautomatisierung bietet das größte Potenzial: täglich weniger manuelle Dateneingabe.',
-  know:   'Ein internes KI-Wissenssystem beantwortet Mitarbeiterfragen sofort und verkürzt Einarbeitungszeiten erheblich.',
-  hr:     'Ein KI-Recruiting-Assistent sortiert Bewerbungen vor und erstellt Stellenanzeigen – in Minuten statt Stunden.',
-  data:   'Automatisierte Reports und KPI-Dashboards liefern die wichtigsten Kennzahlen auf Knopfdruck – ohne manuelle Auswertung.',
-  routine:'Workflow-Automatisierung verbindet Ihre bestehenden Tools und eliminiert Copy-Paste-Arbeit komplett.'
+// Personalized insight per area – shown in the CTA lead block
+const LEAD_INSIGHTS = {
+  comm:   'Ihr Kommunikationsaufwand deutet auf ein hohes Volumen wiederkehrender Anfragen hin. Ein KI-gestützter Assistent könnte genau hier spürbar entlasten – ohne die Qualität Ihrer Kommunikation zu beeinträchtigen.',
+  org:    'Der Koordinationsaufwand in Ihrem Unternehmen lässt sich strukturiert reduzieren. Automatisierte Terminbuchung und KI-gestützte Meeting-Protokolle sind oft die schnellsten und messbaren Hebel.',
+  sales:  'Im Vertrieb steckt oft der größte kurzfristige Hebel: Weniger Zeit für Recherche und Verwaltung bedeutet mehr Zeit für echte Kundengespräche und qualifizierte Abschlüsse.',
+  mkt:    'Ihr Marketing- und Content-Aufwand lässt sich durch KI-Unterstützung erheblich beschleunigen. Besonders Erstversionen und Varianten entstehen deutlich schneller – ohne Qualitätsverlust.',
+  admin:  'Verwaltungsaufwand ist häufig der unsichtbarste Zeitfresser. Dokumenten- und Prozessautomatisierung zeigt hier oft den schnellsten messbaren Effekt im Alltag.',
+  know:   'Wenn Suchen und Nachlesen viel Zeit kosten, fehlt ein zentrales Wissenssystem. KI kann diese Lücke schließen und Antworten in Sekunden liefern statt in Minuten.',
+  hr:     'Personalthemen kosten in wachsenden Unternehmen überproportional viel Zeit. KI übernimmt die Vorarbeit – damit Ihr Team sich auf die Entscheidungen konzentriert.',
+  data:   'Manuelle Reports und Auswertungen binden wertvolle Analysekapazität. Automatisierte KPI-Dashboards liefern dieselben Erkenntnisse in einem Bruchteil der Zeit.',
+  routine:'Routineaufgaben zwischen verschiedenen Tools sind oft der größte versteckte Zeitfresser. Workflow-Automatisierung kann diese vollständig und dauerhaft eliminieren.'
 };
 
 const WEEKS_PER_YEAR = 46;
 const answers = {};
-QUESTIONS.forEach(q => answers[q.key] = q.def);
-let current = -1;
+QUESTIONS.forEach(function(q){ answers[q.key] = q.def; });
+var current = -1;
 
 function startCheck(){
   document.getElementById('intro').style.display='none';
@@ -358,37 +368,39 @@ function startCheck(){
 }
 
 function renderQuestion(){
-  const q = QUESTIONS[current];
-  const total = QUESTIONS.length;
-  const pct = Math.round((current+1)/total*100);
+  var q     = QUESTIONS[current];
+  var total = QUESTIONS.length;
+  var pct   = Math.round((current+1)/total*100);
   document.getElementById('progressLabel').textContent = 'Frage '+(current+1)+' von '+total;
-  document.getElementById('progressPct').textContent = pct+'%';
-  document.getElementById('progressBar').style.width = pct+'%';
+  document.getElementById('progressPct').textContent   = pct+'%';
+  document.getElementById('progressBar').style.width   = pct+'%';
 
-  const val = answers[q.key];
-  const unit = q.isTeam ? (val==1?'Person':'Personen') : (val==1?'Stunde / Woche':'Stunden / Woche');
-  const tasksHtml = q.tasks.length ? '<div class="q-tasks">'+q.tasks.map(function(t){return '<span>'+t+'</span>';}).join('')+'</div>' : '';
+  var val      = answers[q.key];
+  var unit     = q.isTeam ? (val===1?'Person':'Personen') : (val===1?'Stunde / Woche':'Stunden / Woche');
+  var tasksHtml = q.tasks.length
+    ? '<div class="q-tasks">'+q.tasks.map(function(t){return '<span>'+t+'</span>';}).join('')+'</div>'
+    : '';
 
   document.getElementById('qcard').innerHTML =
     '<div class="q-eyebrow"><span class="q-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+IC[q.icon]+'</svg></span>'+q.area+'</div>'+
-    '<h2>'+q.q+'</h2>'+
-    '<p class="q-sub">'+q.sub+'</p>'+
-    tasksHtml+
+    '<h2>'+q.q+'</h2><p class="q-sub">'+q.sub+'</p>'+tasksHtml+
     '<div class="slider-wrap">'+
       '<div class="slider-value"><span class="num" id="sliderNum">'+val+'</span><span class="unit" id="sliderUnit">'+unit+'</span></div>'+
       '<input type="range" id="slider" min="0" max="'+q.max+'" step="1" value="'+val+'" aria-label="'+q.q+'">'+
       '<div class="slider-scale"><span>0</span><span>'+q.max+(q.isTeam?'+':'h')+'</span></div>'+
     '</div>'+
     '<div class="q-nav">'+
-      '<button class="btn-back '+(current===0?'hidden':'')+'" onclick="prevQuestion()"><span>←</span> Zurück</button>'+
-      '<button class="btn btn-primary" onclick="nextQuestion()">'+(current===total-1?'Auswertung ansehen':'Weiter')+' <span class="arrow">→</span></button>'+
+      '<button class="btn-back '+(current===0?'hidden':'')+'" onclick="prevQuestion()"><span>&#8592;</span> Zurück</button>'+
+      '<button class="btn btn-primary" onclick="nextQuestion()">'+(current===total-1?'Auswertung ansehen':'Weiter')+' <span class="arrow">&#8594;</span></button>'+
     '</div>';
 
   document.getElementById('slider').addEventListener('input', function(e){
     var v = parseInt(e.target.value);
     answers[q.key] = v;
-    document.getElementById('sliderNum').textContent = v;
-    document.getElementById('sliderUnit').textContent = q.isTeam ? (v==1?'Person':'Personen') : (v==1?'Stunde / Woche':'Stunden / Woche');
+    document.getElementById('sliderNum').textContent  = v;
+    document.getElementById('sliderUnit').textContent = q.isTeam
+      ? (v===1?'Person':'Personen')
+      : (v===1?'Stunde / Woche':'Stunden / Woche');
   });
 }
 
@@ -398,10 +410,10 @@ function nextQuestion(){
 }
 function prevQuestion(){ if(current>0){ current--; renderQuestion(); window.scrollTo({top:0,behavior:'smooth'}); } }
 
-function teamFactor(team){
-  if(team <= 2)  return 1.00;
-  if(team <= 9)  return 1.05;
-  if(team <= 24) return 1.15;
+function teamFactor(n){
+  if(n <= 2)  return 1.00;
+  if(n <= 9)  return 1.05;
+  if(n <= 24) return 1.15;
   return 1.25;
 }
 
@@ -409,52 +421,50 @@ function showResults(){
   document.getElementById('stage').style.display='none';
   document.getElementById('progressWrap').style.display='none';
 
-  var team = Math.max(1, answers.team);
+  var team = Math.max(1, answers.team || 1);
   var tf   = teamFactor(team);
 
-  // Collect area data
-  var areaData = [];
-  var totalHours = 0, rawPotential = 0;
+  // Collect area data (skip team question)
+  var areaData = [], totalHours = 0, rawPotential = 0;
   QUESTIONS.forEach(function(q){
     if(q.isTeam) return;
-    var hrs   = answers[q.key];
+    var hrs   = answers[q.key] || 0;
     var saved = hrs * q.savingRate;
     totalHours   += hrs;
     rawPotential += saved;
-    areaData.push({key:q.key, area:q.area, hrs:hrs, saved:saved});
+    areaData.push({key:q.key, area:q.area, hebelTitle:q.hebelTitle, hrs:hrs, saved:saved});
   });
 
-  // Apply team factor
-  var weeklySavings = rawPotential * tf;
-  var weeklyR       = Math.round(weeklySavings);
-  var annualSavings = Math.round(weeklySavings * WEEKS_PER_YEAR);
-  var savedDays     = Math.round(annualSavings / 8);
-  var totalR        = Math.round(totalHours);
-  var avgRate       = totalHours > 0 ? Math.round(rawPotential / totalHours * 100) : 0;
+  // Derive all display values from the rounded weekly integer to avoid float drift
+  var weeklyR     = Math.round(rawPotential * tf);
+  var annualHours = weeklyR * WEEKS_PER_YEAR;
+  var savedDays   = Math.round(annualHours / 8);
+  var totalR      = Math.round(totalHours);
+  var avgRate     = totalHours > 0 ? Math.round(rawPotential / totalHours * 100) : 0;
+  var noData      = totalHours < 1;
 
-  // Sorted by savings (for Top-3-Hebel)
-  var byPotential = areaData.slice().sort(function(a,b){ return b.saved - a.saved; });
-  var top3Hebel   = byPotential.filter(function(a){ return a.saved >= 0.5; }).slice(0,3);
+  // Top-3-Hebel: ordered by HOURS ENTERED (what the user flagged as most time-consuming)
+  var activeAreas = areaData.filter(function(a){ return a.hrs > 0; });
+  var byHours     = activeAreas.slice().sort(function(a,b){ return b.hrs - a.hrs; });
+  var top3Hebel   = byHours.slice(0,3);
+  var maxHrs      = byHours.length ? byHours[0].hrs : 1;
 
-  // Sorted by hours entered (for Zeitfresser)
-  var byHours     = areaData.slice().sort(function(a,b){ return b.hrs - a.hrs; });
-  var top3Fressen = byHours.slice(0,3);
-  var maxHrs      = top3Fressen.length ? top3Fressen[0].hrs : 1;
+  // --- Build HTML blocks ---
 
-  // Top-3-Hebel HTML — title is dynamically "${area} automatisieren"
+  // 1. Top-3-Hebel solution cards
   var hebelnHtml = top3Hebel.map(function(a){
-    var s = SOLUTIONS[a.key];
+    var s        = SOLUTIONS[a.key];
     var adjSaved = (a.saved * tf).toFixed(1);
     return '<div class="sol-item">'+
       '<div class="sol-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[s.icon]+'</svg></div>'+
-      '<div class="sol-body"><h4>'+a.area+' automatisieren</h4><p>'+s.desc+'</p></div>'+
+      '<div class="sol-body"><h4>'+a.hebelTitle+' automatisieren</h4><p>'+s.desc+'</p></div>'+
       '<div class="sol-save"><div class="s-num">~'+adjSaved+' h</div><div class="s-lbl">pro Woche</div></div>'+
     '</div>';
   }).join('');
 
-  // Zeitfresser HTML
-  var zeitfresserHtml = top3Fressen.map(function(a){
-    var pct = maxHrs > 0 ? Math.round(a.hrs / maxHrs * 100) : 0;
+  // 2. Zeitfresser bars
+  var zeitfresserHtml = byHours.slice(0,3).map(function(a){
+    var pct = Math.round(a.hrs / maxHrs * 100);
     return '<div class="zeitfresser-item">'+
       '<span class="zi-label">'+a.area+'</span>'+
       '<div class="zi-bar-wrap"><div class="zi-bar" style="width:'+pct+'%"></div></div>'+
@@ -462,75 +472,88 @@ function showResults(){
     '</div>';
   }).join('');
 
-  // Berechnungsgrundlage HTML
+  // 3. Berechnungsgrundlage + trust note
   var teamLine = tf > 1.0
-    ? '<div class="calc-row"><span class="cr-label">× Teamfaktor ('+team+' Personen)</span><span class="cr-val">× '+tf.toFixed(2)+'</span></div>'
+    ? '<div class="calc-row"><span class="cr-label">&#215; Teamfaktor ('+team+' Personen)</span><span class="cr-val">&#215; '+tf.toFixed(2)+'</span></div>'
     : '';
-  var calcHtml =
+  var calcBlock =
     '<div class="calc-basis">'+
       '<h4>Berechnungsgrundlage</h4>'+
       '<div class="calc-row"><span class="cr-label">Erfasster Zeitaufwand pro Woche</span><span class="cr-val">'+totalR+' h</span></div>'+
-      '<div class="calc-row"><span class="cr-label">× Ø Automatisierungspotenzial</span><span class="cr-val">'+avgRate+' %</span></div>'+
+      '<div class="calc-row"><span class="cr-label">&#215; &#216; Automatisierungspotenzial</span><span class="cr-val">'+avgRate+' %</span></div>'+
       teamLine+
       '<hr class="calc-divider">'+
-      '<div class="calc-row calc-result"><span class="cr-label">= Mögliche Entlastung pro Woche</span><span class="cr-val" style="color:var(--teal-500)">'+weeklyR+' h</span></div>'+
-      '<div class="calc-row" style="margin-top:6px"><span class="cr-label" style="font-size:.8rem;color:var(--slate-light)">Basis: '+WEEKS_PER_YEAR+' Arbeitswochen/Jahr · 8 h/Arbeitstag · Potenziale variieren je Prozess und Tool-Einsatz.</span></div>'+
+      '<div class="calc-row calc-result"><span class="cr-label">= Geschätztes Entlastungspotenzial/Woche</span><span class="cr-val" style="color:var(--teal-500)">&#126;'+weeklyR+' h</span></div>'+
+      '<div class="calc-row" style="margin-top:4px"><span class="cr-label" style="font-size:.79rem;color:var(--slate-light)">Basis: '+WEEKS_PER_YEAR+' Arbeitswochen/Jahr &#183; 8 h/Arbeitstag</span></div>'+
+    '</div>'+
+    '<div class="trust-note">'+
+      '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;stroke:var(--slate-light);flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>'+
+      '<p><strong>Hinweis:</strong> Die Ergebnisse dienen als erste Orientierung. Das tatsächliche Potenzial hängt von Ihren Prozessen, genutzten Tools und individuellen Abläufen ab.</p>'+
     '</div>';
 
-  // Nächster Schritt — based on top area by savings
-  var topArea   = top3Hebel[0];
-  var nextHtml  = topArea
+  // 4. Lead / CTA block (dynamic insight + static CTA)
+  var topArea  = top3Hebel[0];
+  var leadHtml = topArea
     ? '<div class="next-step">'+
-        '<div class="ns-eyebrow">Nächster sinnvoller Schritt</div>'+
-        '<h3>'+topArea.area+' hat bei Ihnen das größte Potenzial</h3>'+
-        '<p>'+NEXT_STEPS[topArea.key]+'</p>'+
+        '<div class="ns-eyebrow">Ihr nächster sinnvoller Schritt</div>'+
+        '<h3>'+topArea.hebelTitle+' bietet bei Ihnen das größte Potenzial</h3>'+
+        '<div class="lead-insight"><p>'+LEAD_INSIGHTS[topArea.key]+'</p></div>'+
+        '<p class="lead-static">Die Analyse zeigt erste Ansatzpunkte. In einem kostenlosen Erstgespräch prüfen wir gemeinsam, welche Maßnahmen in Ihrem Unternehmen den größten messbaren Nutzen bringen.</p>'+
+        '<button class="btn btn-primary" style="width:100%" onclick="document.getElementById(\'contactBlock\').scrollIntoView({behavior:\'smooth\'})">Kostenlose Potenzialanalyse anfordern <span class="arrow">&#8594;</span></button>'+
+        '<div class="lead-trust-row">'+
+          '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" style="width:12px;height:12px;stroke:currentColor"><path d="M5 13l4 4L19 7"/></svg>Kostenlos &amp; unverbindlich</span>'+
+          '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" style="width:12px;height:12px;stroke:currentColor"><path d="M5 13l4 4L19 7"/></svg>Keine Akquise</span>'+
+          '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" style="width:12px;height:12px;stroke:currentColor"><path d="M5 13l4 4L19 7"/></svg>Antwort innerhalb 24 h</span>'+
+        '</div>'+
       '</div>'
     : '';
 
-  // Context sentence under big number
-  var noData  = weeklyR < 1;
-  var perPerson = team > 1 ? ' Das entspricht <strong>'+(weeklySavings/team).toFixed(1)+' h pro Mitarbeiter/Woche</strong> und' : ' Das entspricht';
+  // 5. Context sentence under the big number
+  var perPersonText = (team > 1 && weeklyR > 0)
+    ? ' Das entspricht etwa <strong>'+(Math.round(weeklyR/team*10)/10)+' h pro Mitarbeiter/Woche</strong> und'
+    : ' Das entspricht';
   var context = noData
-    ? 'Geben Sie ein paar Werte an, um Ihr Potenzial zu sehen.'
-    : perPerson+' <strong>'+annualSavings+' Stunden im Jahr</strong> – rund <strong>'+savedDays+' Arbeitstage</strong>, die Ihr Team für das gewinnt, was wirklich zählt.';
+    ? 'Geben Sie Ihre Werte an, um eine erste Einschätzung zu erhalten.'
+    : perPersonText+' <strong>ca. '+annualHours+' möglichen Entlastungsstunden im Jahr</strong> – rund <strong>'+savedDays+' Arbeitstage</strong>.';
 
+  // --- Assemble full results page ---
   document.getElementById('results').innerHTML =
     '<div class="result-hero">'+
-      '<div class="r-eyebrow">Ihr persönliches Ergebnis</div>'+
+      '<div class="r-eyebrow">Erste Einschätzung für Ihr Unternehmen</div>'+
       '<div class="big-num">'+weeklyR+'</div>'+
-      '<div class="big-unit">Stunden pro Woche Einsparpotenzial</div>'+
+      '<div class="big-unit">Std. geschätztes Entlastungspotenzial pro Woche</div>'+
       '<p class="r-context">'+context+'</p>'+
       '<div class="result-stats">'+
-        '<div class="rstat"><div class="v">'+totalR+' h</div><div class="l">Zeitaufwand pro Woche</div></div>'+
-        '<div class="rstat"><div class="v">'+weeklyR+' h</div><div class="l">Einsparpotenzial/Woche</div></div>'+
-        '<div class="rstat"><div class="v">'+annualSavings+' h</div><div class="l">Entlastung pro Jahr</div></div>'+
-        '<div class="rstat"><div class="v">'+savedDays+'</div><div class="l">Arbeitstage pro Jahr</div></div>'+
+        '<div class="rstat"><div class="v">'+totalR+' h</div><div class="l">Erfasster Zeitaufwand/Woche</div></div>'+
+        '<div class="rstat"><div class="v">&#126;'+weeklyR+' h</div><div class="l">Geschätztes Potenzial/Woche</div></div>'+
+        '<div class="rstat"><div class="v">&#126;'+annualHours+' h</div><div class="l">Mögliche Entlastung/Jahr</div></div>'+
+        '<div class="rstat"><div class="v">&#126;'+savedDays+'</div><div class="l">Mögliche Arbeitstage/Jahr</div></div>'+
       '</div>'+
-      calcHtml+
+      calcBlock+
     '</div>'+
 
-    (top3Fressen.length && !noData ?
-      '<div class="result-block">'+
-        '<h3>Ihre größten Zeitfresser</h3>'+
-        '<p class="rb-sub">Diese Bereiche verursachen in Ihrem Unternehmen den höchsten manuellen Aufwand:</p>'+
-        '<div class="zeitfresser-list">'+zeitfresserHtml+'</div>'+
-      '</div>'
-    : '')+
+    (!noData && byHours.length
+      ? '<div class="result-block">'+
+          '<h3>Ihre größten Zeitfresser</h3>'+
+          '<p class="rb-sub">Diese Bereiche verursachen laut Ihrer Angaben den höchsten manuellen Aufwand:</p>'+
+          '<div class="zeitfresser-list">'+zeitfresserHtml+'</div>'+
+        '</div>'
+      : '')+
 
-    (top3Hebel.length ?
-      '<div class="result-block">'+
-        '<h3>Ihre Top-3-Hebel</h3>'+
-        '<p class="rb-sub">Diese Bereiche bieten in Ihrem Fall das größte Automatisierungspotenzial:</p>'+
-        hebelnHtml+
-      '</div>'
-    : '')+
+    (top3Hebel.length
+      ? '<div class="result-block">'+
+          '<h3>Ihre Top-3-Hebel</h3>'+
+          '<p class="rb-sub">Basierend auf Ihren Angaben bieten diese Bereiche das größte Automatisierungspotenzial:</p>'+
+          hebelnHtml+
+        '</div>'
+      : '')+
 
-    nextHtml+
+    leadHtml+
 
     '<div class="contact-block" id="contactBlock">'+
       '<div id="formInner">'+
         '<h3>Persönliche Auswertung &amp; nächste Schritte</h3>'+
-        '<p class="cb-sub">Möchten Sie wissen, wie sich dieses Potenzial konkret in Ihrem Unternehmen umsetzen lässt? Wir melden uns mit einer kostenlosen, unverbindlichen Einschätzung.</p>'+
+        '<p class="cb-sub">Wir analysieren gemeinsam, welche Maßnahmen in Ihrem Unternehmen tatsächlich umsetzbar sind – kostenlos und unverbindlich.</p>'+
         '<form id="contactForm" novalidate>'+
           '<input type="hidden" name="_subject" value="Neue Anfrage über MeerZeit.ai KI-Check">'+
           '<input type="hidden" name="_language" value="de">'+
@@ -545,7 +568,7 @@ function showResults(){
           '<div class="field full"><label for="fMsg">Nachricht <span aria-hidden="true" style="color:#f87171">*</span></label><textarea id="fMsg" name="message" placeholder="Worauf möchten Sie sich konzentrieren?" required></textarea></div>'+
           '<div id="formError" style="display:none;color:#f87171;font-size:.88rem;margin-bottom:12px;padding:10px 14px;background:rgba(248,113,113,.1);border-radius:8px"></div>'+
           '<div class="form-actions" style="margin-top:18px">'+
-            '<button type="button" class="btn btn-primary" id="submitBtn" style="width:100%" onclick="submitForm()">Kostenlose Auswertung anfordern <span class="arrow">→</span></button>'+
+            '<button type="button" class="btn btn-primary" id="submitBtn" style="width:100%" onclick="submitForm()">Kostenlose Potenzialanalyse anfordern <span class="arrow">&#8594;</span></button>'+
           '</div>'+
           '<p class="form-note">Ihre Daten werden ausschließlich zur Kontaktaufnahme verwendet. Keine Weitergabe an Dritte.</p>'+
         '</form>'+
@@ -553,12 +576,12 @@ function showResults(){
       '<div class="form-success" id="formSuccess">'+
         '<div class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div>'+
         '<h4>Vielen Dank!</h4>'+
-        '<p>Ihre Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden mit Ihrer persönlichen Auswertung.</p>'+
+        '<p>Ihre Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden mit einer ersten Einschätzung.</p>'+
       '</div>'+
     '</div>'+
 
     '<div class="result-footer">'+
-      '<button class="btn btn-ghost" onclick="restart()">↺ Check erneut starten</button>'+
+      '<button class="btn btn-ghost" onclick="restart()">&#8635; Check erneut starten</button>'+
     '</div>';
 
   document.getElementById('results').style.display='block';
@@ -595,13 +618,13 @@ function submitForm(){
       } else {
         errEl.textContent='Fehler beim Senden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an info@meerzeit.ai.';
         errEl.style.display='block';
-        btn.textContent='Kostenlose Auswertung anfordern →'; btn.disabled=false;
+        btn.textContent='Kostenlose Potenzialanalyse anfordern →'; btn.disabled=false;
       }
     })
     .catch(function(){
       errEl.textContent='Verbindungsfehler. Bitte prüfen Sie Ihre Internetverbindung.';
       errEl.style.display='block';
-      btn.textContent='Kostenlose Auswertung anfordern →'; btn.disabled=false;
+      btn.textContent='Kostenlose Potenzialanalyse anfordern →'; btn.disabled=false;
     });
 }
 
@@ -613,6 +636,7 @@ function restart(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
+
 
 </body>
 </html>
