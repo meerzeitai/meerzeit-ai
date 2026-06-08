@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="de"> 
+<html lang="de">
 <head>
 <script src="ga-consent.js"></script>
 <meta charset="UTF-8">
@@ -237,6 +237,20 @@ footer{padding:30px 0 40px;text-align:center;color:rgba(255,255,255,.4);font-siz
 .sp-industries{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .sp-industries span{background:var(--off);border:1px solid var(--line);color:var(--navy-700);font-family:var(--ff-display);font-weight:600;font-size:.84rem;padding:8px 16px;border-radius:100px}
 .sp-placeholder{padding:16px 20px;border:1.5px dashed var(--line);border-radius:10px;color:var(--slate-light);font-size:.83rem}
+
+/* credibility badge + subtitle */
+.r-subtitle{color:var(--slate);font-size:.97rem;margin-top:12px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6}
+.credibility-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(42,209,201,.08);border:1px solid rgba(42,209,201,.22);color:var(--teal-500);font-size:.78rem;font-weight:600;font-family:var(--ff-display);padding:5px 13px;border-radius:100px;margin-top:14px}
+.credibility-badge svg{width:12px;height:12px;stroke:var(--teal-500);flex-shrink:0}
+
+/* savings tagline + comparison box */
+.savings-tagline{color:var(--teal-500);font-size:.9rem;font-weight:600;font-family:var(--ff-display);margin-top:10px}
+.savings-comparison{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.savings-comparison .sc-title{color:var(--slate);font-size:.87rem;font-weight:500;margin-bottom:10px}
+.savings-comparison .sc-items{display:flex;flex-direction:column;gap:7px}
+.savings-comparison .sc-item{display:flex;align-items:center;gap:9px;color:var(--navy-700);font-size:.92rem;font-weight:500}
+.savings-comparison .sc-ck{width:20px;height:20px;border-radius:5px;background:rgba(42,209,201,.14);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.savings-comparison .sc-ck svg{width:11px;height:11px;stroke:var(--teal-500)}
 </style>
 </head>
 <body>
@@ -365,23 +379,23 @@ const QUESTIONS = [
 
 // Richer, benefit-oriented solution descriptions per area
 const SOLUTIONS = {
-  comm:   {icon:'mail',     desc:'Ein KI-gestützter E-Mail- und Support-Assistent kann einen großen Teil wiederkehrender Anfragen automatisch bearbeiten, zusammenfassen und priorisieren – ohne manuellen Eingriff Ihres Teams.'},
-  org:    {icon:'calendar', desc:'Kalenderkoordination, Aufgabenmanagement und Meeting-Protokolle lassen sich durch KI erheblich beschleunigen. Termine werden ohne Rückfragen koordiniert, Protokolle entstehen automatisch.'},
-  sales:  {icon:'trend',    desc:'KI kann Lead-Recherche, CRM-Pflege und Follow-ups deutlich beschleunigen. Angebote entstehen schneller, Leads werden qualifiziert – Ihr Vertriebsteam konzentriert sich auf die Abschlüsse.'},
-  mkt:    {icon:'edit',     desc:'Content-Agenten erstellen Entwürfe für Social Media, Newsletter und Blogartikel automatisch – auf Basis Ihres Stils und Ihrer Kernbotschaften. Texterstellung in Minuten statt Stunden.'},
-  admin:  {icon:'file',     desc:'Eingehende Dokumente, Rechnungen und Formulare lassen sich automatisch erkennen, klassifizieren und verarbeiten. Manuelle Dateneingabe und Ablage entfällt weitgehend.'},
-  know:   {icon:'search',   desc:'Ein KI-Wissenssystem beantwortet Mitarbeiter- und Kundenfragen sofort auf Basis Ihrer eigenen Dokumentation – ohne Wartezeiten und ohne Experten zu unterbrechen.'},
-  hr:     {icon:'users',    desc:'Bewerbungen sichten, Stellenanzeigen formulieren, Kandidaten vorqualifizieren: KI übernimmt zeitintensive Routineschritte im Recruiting-Prozess zuverlässig und schnell.'},
-  data:   {icon:'chart',    desc:'KI-gestützte Reports und Dashboards liefern konsolidierte Kennzahlen automatisch – täglich, wöchentlich oder auf Abruf, ohne stundenlangen Excel-Aufwand.'},
-  routine:{icon:'repeat',   desc:'Systemübergreifende Datenübertragung, Statusupdates und Standardmeldungen laufen vollautomatisch im Hintergrund – Ihr Team muss nicht manuell eingreifen.'}
+  comm:   {icon:'mail',     desc:'Eingehende E-Mails werden automatisch kategorisiert, zusammengefasst und nach Dringlichkeit priorisiert. Standardanfragen erhalten sofort eine strukturierte Antwort – Ihr Team bearbeitet nur noch Fälle, die echte Aufmerksamkeit erfordern.'},
+  org:    {icon:'calendar', desc:'Terminanfragen werden ohne Rückfragen koordiniert, Meetingprotokolle entstehen automatisch, offene Aufgaben werden priorisiert und den richtigen Personen zugewiesen – der gesamte Koordinationsaufwand reduziert sich spürbar.'},
+  sales:  {icon:'trend',    desc:'Eingehende Anfragen werden automatisch vorqualifiziert, CRM-Einträge aktualisiert und Follow-up-Nachrichten termingerecht vorbereitet. Ihr Vertriebsteam konzentriert sich auf Gespräche mit echtem Abschlusspotenzial.'},
+  mkt:    {icon:'edit',     desc:'Auf Basis von Briefings entstehen Erstentwürfe für Social-Media-Posts, Newsletter und Fachartikel automatisch – kanalspezifisch und im gewünschten Ton. Ihr Team gibt frei statt von der leeren Seite zu starten.'},
+  admin:  {icon:'file',     desc:'Eingehende Rechnungen, Formulare und Dokumente werden automatisch erkannt, klassifiziert und an die richtigen Stellen weitergeleitet. Manuelle Dateneingabe und Ablage entfallen weitgehend.'},
+  know:   {icon:'search',   desc:'Mitarbeiter und Kunden erhalten sofort präzise Antworten aus Ihrer eigenen Dokumentation – ohne Suche, ohne Wartezeit, ohne Kollegen zu unterbrechen. Wissen wird abrufbar statt verschüttet.'},
+  hr:     {icon:'users',    desc:'Bewerbungsunterlagen werden automatisch gesichtet und nach Kriterien vorbewertet, Stellenanzeigen erstellt und Kandidaten systematisch durch den Prozess begleitet. Ihr HR-Team trifft Entscheidungen statt Unterlagen zu sortieren.'},
+  data:   {icon:'chart',    desc:'KPIs, Auswertungen und Reports werden automatisch konsolidiert und aufbereitet – täglich, wöchentlich oder auf Abruf. Stundenlanger manueller Excel-Aufwand entfällt vollständig.'},
+  routine:{icon:'repeat',   desc:'Datenübertragungen zwischen Systemen, wiederkehrende Statusmeldungen und Standardbenachrichtigungen laufen vollautomatisch. Kein manuelles Copy-Paste, keine vergessenen Schritte, keine Systembrüche.'}
 };
 
 // Personalized insight per area – shown in the CTA lead block
 const LEAD_INSIGHTS = {
   comm:   'Ihr Kommunikationsaufwand deutet auf ein hohes Volumen wiederkehrender Anfragen hin. Ein KI-gestützter Assistent könnte genau hier spürbar entlasten – ohne die Qualität Ihrer Kommunikation zu beeinträchtigen.',
   org:    'Der Koordinationsaufwand in Ihrem Unternehmen lässt sich strukturiert reduzieren. Automatisierte Terminbuchung und KI-gestützte Meeting-Protokolle sind oft die schnellsten und messbaren Hebel.',
-  sales:  'Im Vertrieb steckt oft der größte kurzfristige Hebel: Weniger Zeit für Recherche und Verwaltung bedeutet mehr Zeit für echte Kundengespräche und qualifizierte Abschlüsse.',
-  mkt:    'Ihr Marketing- und Content-Aufwand lässt sich durch KI-Unterstützung erheblich beschleunigen. Besonders Erstversionen und Varianten entstehen deutlich schneller – ohne Qualitätsverlust.',
+  sales:  'Der identifizierte Vertriebsaufwand deutet auf hohe Anteile an manueller Vor- und Nacharbeit hin. Automatisierte Qualifizierung, strukturierte Follow-ups und CRM-Automatisierung schaffen direkt mehr Zeit für Abschlüsse.',
+  mkt:    'Der Aufwand für Content und Marketing deutet auf hohen Erstellungsaufwand hin. Automatisierte Erstentwürfe auf Basis Ihres Stils reduzieren die Produktionszeit erheblich – Ihr Team konzentriert sich auf Strategie und Freigabe.',
   admin:  'Verwaltungsaufwand ist häufig der unsichtbarste Zeitfresser. Dokumenten- und Prozessautomatisierung zeigt hier oft den schnellsten messbaren Effekt im Alltag.',
   know:   'Wenn Suchen und Nachlesen viel Zeit kosten, fehlt ein zentrales Wissenssystem. KI kann diese Lücke schließen und Antworten in Sekunden liefern statt in Minuten.',
   hr:     'Personalthemen kosten in wachsenden Unternehmen überproportional viel Zeit. KI übernimmt die Vorarbeit – damit Ihr Team sich auf die Entscheidungen konzentriert.',
@@ -531,18 +545,18 @@ function showResults(){
     '</div>'+
     '<div class="trust-note">'+
       '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;stroke:var(--slate-light);flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>'+
-      '<p><strong>Hinweis:</strong> Die Ergebnisse dienen als erste Orientierung. Das tatsächliche Potenzial hängt von Ihren Prozessen, genutzten Tools und individuellen Abläufen ab.</p>'+
+      '<p><strong>Methodik:</strong> Die Angaben dienen als Orientierungsrahmen. Das tatsächliche Einsparpotenzial wird im Erstgespräch auf Basis Ihrer konkreten Prozesse und Systemlandschaft bewertet.</p>'+
     '</div>';
 
   // 4. Lead / CTA block (dynamic insight + static CTA)
   var topArea  = top3Hebel[0];
   var leadHtml = topArea
     ? '<div class="next-step">'+
-        '<div class="ns-eyebrow">Empfehlung für Ihr Unternehmen</div>'+
-        '<h3>'+topArea.hebelTitle+' bietet bei Ihnen das größte Potenzial</h3>'+
+        '<div class="ns-eyebrow">Priorisierte Handlungsempfehlung</div>'+
+        '<h3>Priorität 1: '+topArea.hebelTitle+'</h3>'+
         '<div class="lead-insight"><p>'+LEAD_INSIGHTS[topArea.key]+'</p></div>'+
         '<p class="lead-static">Diese Potenzialanalyse zeigt Ihnen, wo in Ihrem Unternehmen die größten Hebel liegen. In einem kostenlosen, ca. 20-minütigen Erstgespräch entwickeln wir gemeinsam konkrete, priorisierte Handlungsschritte – ohne Verpflichtung.</p>'+
-        '<button class="btn btn-primary" style="width:100%" onclick="document.getElementById(\'contactBlock\').scrollIntoView({behavior:\'smooth\'})">Persönliche Auswertung erhalten <span class="arrow">&#8594;</span></button>'+
+        '<button class="btn btn-primary" style="width:100%" onclick="document.getElementById(\'contactBlock\').scrollIntoView({behavior:\'smooth\'})">Kostenlose Ersteinschätzung anfordern <span class="arrow">&#8594;</span></button>'+
         '<div class="lead-trust-row">'+
           '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" style="width:12px;height:12px;stroke:currentColor"><path d="M5 13l4 4L19 7"/></svg>Kostenlos &amp; unverbindlich</span>'+
           '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" style="width:12px;height:12px;stroke:currentColor"><path d="M5 13l4 4L19 7"/></svg>Keine Akquise</span>'+
@@ -562,11 +576,13 @@ function showResults(){
   // --- Assemble full results page ---
   document.getElementById('results').innerHTML =
     '<div class="result-hero">'+
-      '<div class="r-eyebrow">Ihre individuelle Potenzialanalyse</div>'+
+      '<div class="r-eyebrow">Erste KI- und Automatisierungseinschätzung</div>'+
       '<div class="big-num">'+weeklyR+'</div>'+
       '<div class="big-unit">Stunden geschätztes Entlastungspotenzial pro Woche</div>'+
       '<p class="r-context">'+context+'</p>'+
-      (!noData ? '<div class="methodology-note"><p>Diese Einschätzung basiert auf typischen Automatisierungspotenzialen vergleichbarer Unternehmen – abgeleitet aus Branchenanalysen und Praxiserfahrungen aus Dienstleistung, Beratung, Agenturen und Handwerk.</p></div>' : '')+
+      (!noData ? '<p class="r-subtitle">Basierend auf Ihren Angaben wurden die größten Effizienzhebel Ihres Unternehmens identifiziert.</p>' : '')+
+      (!noData ? '<div class="credibility-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Orientierungswert auf Basis vergleichbarer Unternehmen</div>' : '')+
+      (!noData ? '<div class="methodology-note" style="margin-top:18px"><p>Diese Einschätzung basiert auf typischen Automatisierungspotenzialen vergleichbarer Unternehmen – abgeleitet aus Branchenanalysen und praktischen Umsetzungserfahrungen.</p></div>' : '')+
       '<div class="result-stats">'+
         '<div class="rstat"><div class="v">'+totalR+' h</div><div class="l">Erfasster Zeitaufwand / Woche</div></div>'+
         '<div class="rstat"><div class="v">&#126;'+weeklyR+' h</div><div class="l">Geschätztes Potenzial / Woche</div></div>'+
@@ -581,7 +597,18 @@ function showResults(){
           '<div class="sh-eyebrow">Geschätztes Einsparpotenzial pro Jahr</div>'+
           '<div class="sh-amount">'+savingsDisplay+'</div>'+
           '<div class="sh-sub">Basis: Ø 35–50 € Personalkosten pro Stunde · konservative Schätzung</div>'+
-          '<div class="sh-note">Das tatsächliche Einsparpotenzial hängt von Ihren Prozessen, der genutzten Software und den Implementierungskosten ab. Diese Schätzung dient als erste Orientierung.</div>'+
+          '<div class="savings-tagline">Wiedergewonnene Zeit für Wachstum, Kunden und strategische Arbeit.</div>'+
+          (weeklyR >= 5 ?
+            '<div class="savings-comparison">'+
+              '<div class="sc-title">'+weeklyR+' h pro Woche entsprechen ungefähr:</div>'+
+              '<div class="sc-items">'+
+                '<div class="sc-item"><span class="sc-ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>'+Math.round(weeklyR/8*10)/10+' Arbeitstagen pro Woche</div>'+
+                '<div class="sc-item"><span class="sc-ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>'+savedDays+' Arbeitstagen pro Jahr</div>'+
+                '<div class="sc-item"><span class="sc-ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>'+Math.max(1,Math.round(savedDays/23))+' Monaten Arbeitskapazität</div>'+
+              '</div>'+
+            '</div>'
+          : '')+
+          '<div class="sh-note">Das tatsächliche Einsparpotenzial wird im Erstgespräch auf Basis Ihrer konkreten Prozesse und Systemlandschaft bewertet.</div>'+
         '</div>'
       : '')+
 
@@ -594,15 +621,14 @@ function showResults(){
       : '')+
 
     '<div class="social-proof-block">'+
-      '<div class="sp-eyebrow">Bereits relevant für Unternehmen aus</div>'+
+      '<div class="sp-eyebrow">Bekannte Herausforderungen</div>'+
+      '<p class="sp-desc">Viele Unternehmen stehen vor ähnlichen Herausforderungen in Kommunikation, Organisation und Verwaltung.</p>'+
       '<div class="sp-industries">'+
-        '<span>Dienstleistung</span>'+
-        '<span>Beratung</span>'+
+        '<span>Dienstleister</span>'+
         '<span>Agenturen</span>'+
-        '<span>Handwerk</span>'+
-        '<span>E-Commerce</span>'+
+        '<span>Berater</span>'+
+        '<span>Handwerksbetriebe</span>'+
       '</div>'+
-      '<div class="sp-placeholder">Kundenstimmen &amp; Referenzen folgen in Kürze</div>'+
     '</div>'+
 
     (top3Hebel.length
@@ -643,7 +669,7 @@ function showResults(){
             '<div class="field"><label for="fEmail">E-Mail <span aria-hidden="true" style="color:#f87171">*</span></label><input type="email" id="fEmail" name="email" placeholder="name@firma.de" required></div>'+
             '<div class="field"><label for="fPhone">Telefon (optional)</label><input type="tel" id="fPhone" name="phone" placeholder="+49 ..."></div>'+
           '</div>'+
-          '<div class="field full"><label for="fMsg">Nachricht <span aria-hidden="true" style="color:#f87171">*</span></label><textarea id="fMsg" name="message" placeholder="Worauf möchten Sie sich konzentrieren?" required></textarea></div>'+
+          '<div class="field full"><label for="fMsg">Worauf möchten Sie sich in den nächsten 12 Monaten stärker konzentrieren? <span aria-hidden="true" style="color:#f87171">*</span></label><textarea id="fMsg" name="message" placeholder="z. B. Mehr Kunden gewinnen · Weniger Administration · Prozesse automatisieren · Mitarbeiter entlasten" required></textarea></div>'+
           '<div id="formError" style="display:none;color:#f87171;font-size:.88rem;margin-bottom:12px;padding:10px 14px;background:rgba(248,113,113,.1);border-radius:8px"></div>'+
           '<div class="form-trust-signals">'+
             '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="3" style="width:11px;height:11px;stroke:var(--teal-400)"><path d="M5 13l4 4L19 7"/></svg>Kostenlos</span>'+
