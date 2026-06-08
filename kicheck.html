@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="de"> 
+<html lang="de">
 <head>
 <script src="ga-consent.js"></script>
 <meta charset="UTF-8">
@@ -199,7 +199,44 @@ footer{padding:30px 0 40px;text-align:center;color:rgba(255,255,255,.4);font-siz
   .zi-label{min-width:100px;font-size:.88rem}
   .next-step{padding:28px 22px}
   .calc-basis{padding:16px 18px}
+  .savings-highlight{padding:24px 22px}
+  .trust-section{margin-bottom:22px;padding-bottom:22px}
+  .social-proof-block{padding:28px 22px}
+  .form-trust-signals{gap:10px 14px}
 }
+
+/* methodology note */
+.methodology-note{background:rgba(42,209,201,.06);border:1px solid rgba(42,209,201,.18);border-radius:12px;padding:16px 20px;margin-top:22px;text-align:left}
+.methodology-note p{color:var(--slate);font-size:.87rem;line-height:1.55;margin:0}
+
+/* annual savings highlight */
+.savings-highlight{background:#fff;border-radius:24px;padding:32px 40px;box-shadow:0 20px 60px -20px rgba(0,0,0,.3);margin-bottom:24px;border-top:4px solid var(--teal-400);position:relative;overflow:hidden}
+.savings-highlight::before{content:'';position:absolute;top:0;right:0;width:180px;height:180px;background:radial-gradient(circle,rgba(42,209,201,.08),transparent 70%);pointer-events:none}
+.savings-highlight .sh-eyebrow{font-family:var(--ff-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-500);margin-bottom:10px}
+.savings-highlight .sh-amount{font-family:var(--ff-display);font-size:clamp(2rem,6vw,2.8rem);font-weight:800;color:var(--navy-900);line-height:1.1}
+.savings-highlight .sh-sub{color:var(--slate);font-size:.9rem;margin-top:6px;font-weight:500}
+.savings-highlight .sh-note{color:var(--slate-light);font-size:.8rem;margin-top:10px;line-height:1.5}
+
+/* trust section above form */
+.trust-section{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1)}
+.trust-section h4{color:#fff;font-size:1.06rem;margin-bottom:16px;font-family:var(--ff-display);font-weight:700}
+.trust-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.trust-list li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.85);font-size:.96rem}
+.trust-list .tl-ck{width:22px;height:22px;border-radius:6px;background:rgba(42,209,201,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trust-list .tl-ck svg{width:12px;height:12px;stroke:var(--teal-400)}
+.trust-meta{color:rgba(255,255,255,.5);font-size:.86rem;display:flex;gap:20px;flex-wrap:wrap}
+.trust-meta span{display:flex;align-items:center;gap:6px}
+
+/* form trust signals */
+.form-trust-signals{display:flex;gap:8px 20px;flex-wrap:wrap;margin-bottom:22px;padding:12px 16px;background:rgba(255,255,255,.05);border-radius:10px;border:1px solid rgba(255,255,255,.08)}
+.form-trust-signals span{font-size:.82rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:6px}
+
+/* social proof placeholder */
+.social-proof-block{background:#fff;border-radius:24px;padding:36px 40px;box-shadow:0 20px 60px -20px rgba(0,0,0,.25);margin-bottom:24px;text-align:center}
+.sp-eyebrow{font-family:var(--ff-display);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-light);margin-bottom:14px}
+.sp-industries{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.sp-industries span{background:var(--off);border:1px solid var(--line);color:var(--navy-700);font-family:var(--ff-display);font-weight:600;font-size:.84rem;padding:8px 16px;border-radius:100px}
+.sp-placeholder{padding:16px 20px;border:1.5px dashed var(--line);border-radius:10px;color:var(--slate-light);font-size:.83rem}
 </style>
 </head>
 <body>
@@ -224,16 +261,16 @@ footer{padding:30px 0 40px;text-align:center;color:rgba(255,255,255,.4);font-siz
 
   <!-- INTRO -->
   <section class="intro" id="intro">
-    <span class="badge"><span class="dot"></span>Kostenloser KI-Check · ca. 3 Minuten</span>
+    <span class="badge"><span class="dot"></span>Kostenlose Potenzialanalyse · ca. 5 Minuten</span>
     <h1>Wie viel Zeit verliert Ihr Unternehmen <span class="grad">jede Woche?</span></h1>
-    <p>Beantworten Sie 10 kurze Fragen zu Ihrem Arbeitsalltag. Am Ende sehen Sie, wie viele Stunden Sie pro Woche durch Automatisierung und KI zurückgewinnen können – mit konkreten Lösungsbeispielen für Ihr Unternehmen.</p>
+    <p>Beantworten Sie 10 kurze Fragen zu Ihrem Arbeitsalltag. Sie erhalten eine individuelle Einschätzung, wie viele Stunden Ihr Unternehmen pro Woche durch KI und Automatisierung zurückgewinnen kann – mit konkreten Handlungsempfehlungen.</p>
     <div class="intro-checks">
       <span><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5"><path d="M5 13l4 4L19 7"/></svg></span>Kostenlos</span>
       <span><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5"><path d="M5 13l4 4L19 7"/></svg></span>Unverbindlich</span>
       <span><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3.5"><path d="M5 13l4 4L19 7"/></svg></span>Sofortige Auswertung</span>
     </div>
     <div class="intro-cta">
-      <button class="btn btn-primary" onclick="startCheck()">KI-Check starten <span class="arrow">→</span></button>
+      <button class="btn btn-primary" onclick="startCheck()">Kostenlosen Check starten <span class="arrow">→</span></button>
     </div>
   </section>
 
@@ -443,6 +480,12 @@ function showResults(){
   var avgRate     = totalHours > 0 ? Math.round(rawPotential / totalHours * 100) : 0;
   var noData      = totalHours < 1;
 
+  // Annual savings estimate (35–50 € avg hourly cost)
+  var savingsLow  = Math.round(annualHours * 35 / 500) * 500;
+  var savingsHigh = Math.round(annualHours * 50 / 500) * 500;
+  function fmtNum(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+  var savingsDisplay = fmtNum(savingsLow)+' – '+fmtNum(savingsHigh)+' €';
+
   // Top-3-Hebel: ordered by HOURS ENTERED (what the user flagged as most time-consuming)
   var activeAreas = areaData.filter(function(a){ return a.hrs > 0; });
   var byHours     = activeAreas.slice().sort(function(a,b){ return b.hrs - a.hrs; });
@@ -495,11 +538,11 @@ function showResults(){
   var topArea  = top3Hebel[0];
   var leadHtml = topArea
     ? '<div class="next-step">'+
-        '<div class="ns-eyebrow">Ihr nächster sinnvoller Schritt</div>'+
+        '<div class="ns-eyebrow">Empfehlung für Ihr Unternehmen</div>'+
         '<h3>'+topArea.hebelTitle+' bietet bei Ihnen das größte Potenzial</h3>'+
         '<div class="lead-insight"><p>'+LEAD_INSIGHTS[topArea.key]+'</p></div>'+
-        '<p class="lead-static">Die Analyse zeigt erste Ansatzpunkte. In einem kostenlosen Erstgespräch prüfen wir gemeinsam, welche Maßnahmen in Ihrem Unternehmen den größten messbaren Nutzen bringen.</p>'+
-        '<button class="btn btn-primary" style="width:100%" onclick="document.getElementById(\'contactBlock\').scrollIntoView({behavior:\'smooth\'})">Kostenlose Potenzialanalyse anfordern <span class="arrow">&#8594;</span></button>'+
+        '<p class="lead-static">Diese Potenzialanalyse zeigt Ihnen, wo in Ihrem Unternehmen die größten Hebel liegen. In einem kostenlosen, ca. 20-minütigen Erstgespräch entwickeln wir gemeinsam konkrete, priorisierte Handlungsschritte – ohne Verpflichtung.</p>'+
+        '<button class="btn btn-primary" style="width:100%" onclick="document.getElementById(\'contactBlock\').scrollIntoView({behavior:\'smooth\'})">Persönliche Auswertung erhalten <span class="arrow">&#8594;</span></button>'+
         '<div class="lead-trust-row">'+
           '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" style="width:12px;height:12px;stroke:currentColor"><path d="M5 13l4 4L19 7"/></svg>Kostenlos &amp; unverbindlich</span>'+
           '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" style="width:12px;height:12px;stroke:currentColor"><path d="M5 13l4 4L19 7"/></svg>Keine Akquise</span>'+
@@ -519,31 +562,53 @@ function showResults(){
   // --- Assemble full results page ---
   document.getElementById('results').innerHTML =
     '<div class="result-hero">'+
-      '<div class="r-eyebrow">Erste Einschätzung für Ihr Unternehmen</div>'+
+      '<div class="r-eyebrow">Ihre individuelle Potenzialanalyse</div>'+
       '<div class="big-num">'+weeklyR+'</div>'+
-      '<div class="big-unit">Std. geschätztes Entlastungspotenzial pro Woche</div>'+
+      '<div class="big-unit">Stunden geschätztes Entlastungspotenzial pro Woche</div>'+
       '<p class="r-context">'+context+'</p>'+
+      (!noData ? '<div class="methodology-note"><p>Diese Einschätzung basiert auf typischen Automatisierungspotenzialen vergleichbarer Unternehmen – abgeleitet aus Branchenanalysen und Praxiserfahrungen aus Dienstleistung, Beratung, Agenturen und Handwerk.</p></div>' : '')+
       '<div class="result-stats">'+
-        '<div class="rstat"><div class="v">'+totalR+' h</div><div class="l">Erfasster Zeitaufwand/Woche</div></div>'+
-        '<div class="rstat"><div class="v">&#126;'+weeklyR+' h</div><div class="l">Geschätztes Potenzial/Woche</div></div>'+
-        '<div class="rstat"><div class="v">&#126;'+annualHours+' h</div><div class="l">Mögliche Entlastung/Jahr</div></div>'+
-        '<div class="rstat"><div class="v">&#126;'+savedDays+'</div><div class="l">Mögliche Arbeitstage/Jahr</div></div>'+
+        '<div class="rstat"><div class="v">'+totalR+' h</div><div class="l">Erfasster Zeitaufwand / Woche</div></div>'+
+        '<div class="rstat"><div class="v">&#126;'+weeklyR+' h</div><div class="l">Geschätztes Potenzial / Woche</div></div>'+
+        '<div class="rstat"><div class="v">&#126;'+annualHours+' h</div><div class="l">Mögliche Entlastung / Jahr</div></div>'+
+        '<div class="rstat"><div class="v">&#126;'+savedDays+'</div><div class="l">Mögliche Arbeitstage / Jahr</div></div>'+
       '</div>'+
       calcBlock+
     '</div>'+
 
+    (!noData && weeklyR > 0
+      ? '<div class="savings-highlight">'+
+          '<div class="sh-eyebrow">Geschätztes Einsparpotenzial pro Jahr</div>'+
+          '<div class="sh-amount">'+savingsDisplay+'</div>'+
+          '<div class="sh-sub">Basis: Ø 35–50 € Personalkosten pro Stunde · konservative Schätzung</div>'+
+          '<div class="sh-note">Das tatsächliche Einsparpotenzial hängt von Ihren Prozessen, der genutzten Software und den Implementierungskosten ab. Diese Schätzung dient als erste Orientierung.</div>'+
+        '</div>'
+      : '')+
+
     (!noData && byHours.length
       ? '<div class="result-block">'+
           '<h3>Ihre größten Zeitfresser</h3>'+
-          '<p class="rb-sub">Diese Bereiche verursachen laut Ihrer Angaben den höchsten manuellen Aufwand:</p>'+
+          '<p class="rb-sub">Auf Basis Ihrer Angaben verursachen diese Bereiche den größten manuellen Aufwand in Ihrem Unternehmen:</p>'+
           '<div class="zeitfresser-list">'+zeitfresserHtml+'</div>'+
         '</div>'
       : '')+
 
+    '<div class="social-proof-block">'+
+      '<div class="sp-eyebrow">Bereits relevant für Unternehmen aus</div>'+
+      '<div class="sp-industries">'+
+        '<span>Dienstleistung</span>'+
+        '<span>Beratung</span>'+
+        '<span>Agenturen</span>'+
+        '<span>Handwerk</span>'+
+        '<span>E-Commerce</span>'+
+      '</div>'+
+      '<div class="sp-placeholder">Kundenstimmen &amp; Referenzen folgen in Kürze</div>'+
+    '</div>'+
+
     (top3Hebel.length
       ? '<div class="result-block">'+
-          '<h3>Ihre Top-3-Hebel</h3>'+
-          '<p class="rb-sub">Basierend auf Ihren Angaben bieten diese Bereiche das größte Automatisierungspotenzial:</p>'+
+          '<h3>Ihre drei größten Automatisierungshebel</h3>'+
+          '<p class="rb-sub">Diese Bereiche bieten in Ihrem Unternehmen das höchste Einsparpotenzial durch KI und Automatisierung:</p>'+
           hebelnHtml+
         '</div>'
       : '')+
@@ -552,8 +617,21 @@ function showResults(){
 
     '<div class="contact-block" id="contactBlock">'+
       '<div id="formInner">'+
-        '<h3>Persönliche Auswertung &amp; nächste Schritte</h3>'+
-        '<p class="cb-sub">Wir analysieren gemeinsam, welche Maßnahmen in Ihrem Unternehmen tatsächlich umsetzbar sind – kostenlos und unverbindlich.</p>'+
+        '<div class="trust-section">'+
+          '<h4>Was Sie im kostenlosen Erstgespräch erhalten:</h4>'+
+          '<ul class="trust-list">'+
+            '<li><span class="tl-ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Analyse Ihrer größten Zeitfresser</li>'+
+            '<li><span class="tl-ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Identifikation kurzfristiger Quick Wins</li>'+
+            '<li><span class="tl-ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Individuelle KI- und Automatisierungsempfehlungen</li>'+
+            '<li><span class="tl-ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>Priorisierte Handlungsschritte</li>'+
+          '</ul>'+
+          '<div class="trust-meta">'+
+            '<span>Dauer: ca. 20 Minuten</span>'+
+            '<span>Kostenlos &amp; unverbindlich</span>'+
+          '</div>'+
+        '</div>'+
+        '<h3>Jetzt Erstgespräch vereinbaren</h3>'+
+        '<p class="cb-sub">Erhalten Sie eine individuelle Einschätzung zu Ihrem Automatisierungspotenzial – konkret, praxisnah und ohne Verpflichtung.</p>'+
         '<form id="contactForm" novalidate>'+
           '<input type="hidden" name="_subject" value="Neue Anfrage über MeerZeit.ai KI-Check">'+
           '<input type="hidden" name="_language" value="de">'+
@@ -567,10 +645,16 @@ function showResults(){
           '</div>'+
           '<div class="field full"><label for="fMsg">Nachricht <span aria-hidden="true" style="color:#f87171">*</span></label><textarea id="fMsg" name="message" placeholder="Worauf möchten Sie sich konzentrieren?" required></textarea></div>'+
           '<div id="formError" style="display:none;color:#f87171;font-size:.88rem;margin-bottom:12px;padding:10px 14px;background:rgba(248,113,113,.1);border-radius:8px"></div>'+
-          '<div class="form-actions" style="margin-top:18px">'+
-            '<button type="button" class="btn btn-primary" id="submitBtn" style="width:100%" onclick="submitForm()">Kostenlose Potenzialanalyse anfordern <span class="arrow">&#8594;</span></button>'+
+          '<div class="form-trust-signals">'+
+            '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="3" style="width:11px;height:11px;stroke:var(--teal-400)"><path d="M5 13l4 4L19 7"/></svg>Kostenlos</span>'+
+            '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="3" style="width:11px;height:11px;stroke:var(--teal-400)"><path d="M5 13l4 4L19 7"/></svg>Unverbindlich</span>'+
+            '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="3" style="width:11px;height:11px;stroke:var(--teal-400)"><path d="M5 13l4 4L19 7"/></svg>Keine Kaltakquise</span>'+
+            '<span><svg viewBox="0 0 24 24" fill="none" stroke-width="3" style="width:11px;height:11px;stroke:var(--teal-400)"><path d="M5 13l4 4L19 7"/></svg>Antwort innerhalb von 24 Stunden</span>'+
           '</div>'+
-          '<p class="form-note">Ihre Daten werden ausschließlich zur Kontaktaufnahme verwendet. Keine Weitergabe an Dritte.</p>'+
+          '<div class="form-actions" style="margin-top:4px">'+
+            '<button type="button" class="btn btn-primary" id="submitBtn" style="width:100%" onclick="submitForm()">Kostenlose Experteneinschätzung anfordern <span class="arrow">&#8594;</span></button>'+
+          '</div>'+
+          '<p class="form-note">Ihre Daten werden ausschließlich zur Kontaktaufnahme genutzt. Keine Weitergabe an Dritte.</p>'+
         '</form>'+
       '</div>'+
       '<div class="form-success" id="formSuccess">'+
@@ -618,13 +702,13 @@ function submitForm(){
       } else {
         errEl.textContent='Fehler beim Senden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an info@meerzeit.ai.';
         errEl.style.display='block';
-        btn.textContent='Kostenlose Potenzialanalyse anfordern →'; btn.disabled=false;
+        btn.textContent='Kostenlose Experteneinschätzung anfordern →'; btn.disabled=false;
       }
     })
     .catch(function(){
       errEl.textContent='Verbindungsfehler. Bitte prüfen Sie Ihre Internetverbindung.';
       errEl.style.display='block';
-      btn.textContent='Kostenlose Potenzialanalyse anfordern →'; btn.disabled=false;
+      btn.textContent='Kostenlose Experteneinschätzung anfordern →'; btn.disabled=false;
     });
 }
 
